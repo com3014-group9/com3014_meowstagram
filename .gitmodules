@@ -1,0 +1,12 @@
+[submodule "com3014_profile"]
+	path = com3014_profile
+	url = https://github.com/com3014-group9/com3014_profile.git
+[submodule "com3014_image_storage"]
+	path = com3014_image_storage
+	url = https://github.com/com3014-group9/com3014_image_storage.git
+[submodule "com3014_auth"]
+	path = com3014_auth
+	url = https://github.com/com3014-group9/com3014_auth.git
+[submodule "com3014_frontend"]
+	path = com3014_frontend
+	url = https://github.com/com3014-group9/com3014_frontend.git
