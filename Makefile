@@ -1,7 +1,15 @@
-build-all: build-auth build-frontend build-image-storage build-profile
-start-all: start-auth start-frontend start-image-storage start-profile
-stop-all: stop-auth stop-frontend stop-image-storage stop-profile
-clean-all: clean-auth clean-frontend clean-image-storage clean-profile
+# build-all: build-auth build-frontend build-image-storage build-profile
+# start-all: start-auth start-frontend start-image-storage start-profile
+# stop-all: stop-auth stop-frontend stop-image-storage stop-profile
+# test-all: test-auth test-frontend test-image-storage test-profile
+# clean-all: clean-auth clean-frontend clean-image-storage clean-profile
+
+# TEMP UNTIL ALL SERVICES ARE DOCKERIZED
+build-all: build-auth build-image-storage
+start-all: start-auth start-image-storage
+stop-all: stop-auth stop-image-storage
+test-all: test-auth test-image-storage
+clean-all: clean-auth clean-image-storage
 
 
 # AUTHENTICATION
@@ -17,6 +25,10 @@ start-auth:
 stop-auth: 
 	$(info Stopping Auth...)
 	docker compose -f ./services/com3014_auth/docker-compose.yml down
+
+test-auth:
+	$(info Testing Auth...)
+	docker compose -f ./services/com3014_auth/docker-compose.yml run auth_server python3 -m pytest
 
 clean-auth: 
 	$(info Cleaning Auth...)
@@ -38,6 +50,10 @@ stop-frontend:
 	$(info Stopping Frontend...)
 	docker compose -f ./services/com3014_frontend/docker-compose.yml down
 
+test-frontend:
+	$(info Testing Frontend...)
+    # docker compose -f ./services/com3014_frontend/docker-compose.yml run frontend_server python3 -m pytest
+
 clean-frontend:
 	$(info Cleaning Frontend...)
 	docker compose -f ./services/com3014_frontend/docker-compose.yml rm -f -s -v
@@ -58,6 +74,10 @@ stop-image-storage:
 	$(info Stopping Image Storage...)
 	docker compose -f ./services/com3014_image_storage/file_server/docker-compose.yml down
 
+test-image-storage:
+	$(info Testing Image Storage...)
+	docker compose -f ./services/com3014_image_storage/file_server/docker-compose.yml run imager-app python3 -m pytest
+
 clean-image-storage:
 	$(info Cleaning Image Storage...)
 	docker compose -f ./services/com3014_image_storage/file_server/docker-compose.yml rm -f -s -v
@@ -77,6 +97,10 @@ start-profile:
 stop-profile:
 	$(info Stopping Profile...)
 	docker compose -f ./services/com3014_profile/docker-compose.yml down
+
+test-profile:
+	$(info Testing Profile...)
+	# docker compose -f ./services/com3014_profile/docker-compose.yml run profile_server python3 -m pytest
 
 clean-profile:
 	$(info Cleaning Profile...)
