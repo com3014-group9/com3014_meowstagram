@@ -1,5 +1,5 @@
 # com3014_meowstagram
-This repository builds and runs the whole app
+This repository provides scripts to build and run the Meowstagram app.
 
 ## Requirements
 The following packages must be configured for your system:
@@ -10,6 +10,8 @@ The following packages must be configured for your system:
 
 Please consult the relevant documentation for guidance setting these up
 
+IMPORTANT: The Makefile is written with docker compose v2 in mind, invoked using `docker compose`. If you install docker compose v1, which is invoked using `docker-compose`, the Makefile will not work.
+
 ## Building and running the app
 A Makefile is provided to build and run the app. It has been tested on an Ubuntu system, and may or may not work on other platforms.
 
@@ -19,14 +21,19 @@ Each microservice has `make` targets to build, start, stop, test and clean the s
 
 The latest versions of the microservices will be pulled from GitHub as part of the build process.
 
-To target all the services at once, use
+To target the app as a whole, use the following `make` targets:
 - `make build-all`
 - `make start-all`
 - `make stop-all`
 - `make test-all`
 - `make clean-all`
 
-To target individual services, you can use
+An example usage would be:
+- `sudo make build-all` - build the app
+- `sudo make start-all` - start the app
+- `sudo make stop-all` - stop the app once you are done with it
+
+To target individual services, the following additional `make` targets are provided:
 - `make build-auth`
 - `make start-auth`
 - `make stop-auth`
