@@ -1,15 +1,8 @@
-# build-all: build-auth build-frontend build-image-storage build-profile
-# start-all: start-auth start-frontend start-image-storage start-profile
-# stop-all: stop-auth stop-frontend stop-image-storage stop-profile
-# test-all: test-auth test-frontend test-image-storage test-profile
-# clean-all: clean-auth clean-frontend clean-image-storage clean-profile
-
-# TODO, once frontend is dockerized, add it here
-build-all: build-auth build-image-storage build-profile
-start-all: start-auth start-image-storage start-profile
-stop-all: stop-auth stop-image-storage stop-profile
-test-all: test-auth test-image-storage test-profile
-clean-all: clean-auth clean-image-storage clean-profile
+build-all: build-auth build-frontend build-image-storage build-profile
+start-all: start-auth start-frontend start-image-storage start-profile
+stop-all: stop-auth stop-frontend stop-image-storage stop-profile
+test-all: test-auth test-frontend test-image-storage test-profile
+clean-all: clean-auth clean-frontend clean-image-storage clean-profile
 
 # AUTHENTICATION
 build-auth:
@@ -51,8 +44,8 @@ stop-frontend:
 
 test-frontend:
 	$(info Testing Frontend...)
-	# TODO replace with actual test command
-    # docker compose -f ./services/com3014_frontend/docker-compose.yml run frontend_server python3 -m pytest
+	# Uncomment when frontend has unit tests
+    	# docker compose -f ./services/com3014_frontend/docker-compose.yml run frontend npm test
 
 clean-frontend:
 	$(info Cleaning Frontend...)
