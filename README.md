@@ -1,6 +1,14 @@
 # com3014_meowstagram
 This repository provides scripts to build and run the Meowstagram app.
 
+The repositories for the individual microservices that make up the app can be found by following these links:
+- [Frontend](https://github.com/com3014-group9/com3014_frontend)
+- [Authentication Service](https://github.com/com3014-group9/com3014_auth)
+- [Image Storage Service](https://github.com/com3014-group9/com3014_image_storage)
+- [Profile Service https](https://github.com/com3014-group9/com3014_profile)
+- [Image Tagging Service](https://github.com/com3014-group9/com3014_image_tagging)
+
+
 ## Requirements
 The following packages must be configured for your system:
 - `make`
