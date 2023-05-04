@@ -12,11 +12,12 @@ The repositories for the individual microservices that make up the app can be fo
 ## Requirements
 The following packages must be configured for your system:
 - `make`
+- `sh`
 - `git`
 - `docker`
 - `docker compose`
 
-Please consult the relevant documentation for guidance setting these up
+Please consult the relevant documentation for guidance setting these up. If you are using Ubuntu, most of these packages should already be installed.
 
 IMPORTANT: The Makefile is written with docker compose v2 in mind, invoked using `docker compose`. If you install docker compose v1, which is invoked using `docker-compose`, the Makefile will not work.
 
