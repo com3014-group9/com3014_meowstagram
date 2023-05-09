@@ -42,6 +42,8 @@ An example usage would be:
 - `sudo make start-all` - start the app
 - `sudo make stop-all` - stop the app once you are done with it
 
+Once the app is running, it can be accessed at `http://localhost:4173/`
+
 To target individual services, the following additional `make` targets are provided:
 - `make build-auth`
 - `make start-auth`
@@ -63,3 +65,8 @@ To target individual services, the following additional `make` targets are provi
 - `make stop-profile`
 - `make test-profile`
 - `make clean-profile`
+- `make build-image-tagging`
+- `make start-image-tagging`
+- `make stop-image-tagging`
+- `make test-image-tagging`
+- `make clean-image-tagging`

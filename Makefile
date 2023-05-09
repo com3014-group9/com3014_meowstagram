@@ -1,8 +1,9 @@
-build-all: build-auth build-frontend build-image-storage build-profile
-start-all: start-auth start-frontend start-image-storage start-profile
-stop-all: stop-auth stop-frontend stop-image-storage stop-profile
-test-all: test-auth test-frontend test-image-storage test-profile
-clean-all: clean-auth clean-frontend clean-image-storage clean-profile
+build-all: build-auth build-frontend build-profile build-image-storage build-image-tagging
+start-all: start-auth start-frontend start-profile start-image-storage start-image-tagging
+stop-all: stop-auth stop-frontend stop-profile stop-image-tagging stop-image-storage
+test-all: test-auth test-frontend test-profile test-image-storage test-image-tagging
+clean-all: clean-auth clean-frontend clean-profile clean-image-tagging clean-image-storage
+
 
 # AUTHENTICATION
 build-auth:
@@ -25,7 +26,7 @@ test-auth:
 clean-auth: 
 	$(info Cleaning Auth...)
 	docker compose -f ./services/com3014_auth/docker-compose.yml rm -f -s -v
-	rm -r ./services/com3014_auth
+	rm -rf ./services/com3014_auth
 
 
 # FRONTEND
@@ -36,7 +37,7 @@ build-frontend:
 
 start-frontend:
 	$(info Starting Frontend...)
-	docker compose -f ./services/com3014_frontend/docker-compose.yml up -d
+	docker compose -f ./services/com3014_frontend/docker-compose.yml up -d --build
 
 stop-frontend:
 	$(info Stopping Frontend...)
@@ -44,13 +45,12 @@ stop-frontend:
 
 test-frontend:
 	$(info Testing Frontend...)
-	# Uncomment when frontend has unit tests
-    	# docker compose -f ./services/com3014_frontend/docker-compose.yml run frontend npm test
+	docker compose -f ./services/com3014_frontend/docker-compose.yml run frontend npx vitest run --dom
 
 clean-frontend:
 	$(info Cleaning Frontend...)
 	docker compose -f ./services/com3014_frontend/docker-compose.yml rm -f -s -v
-	rm -r ./services/com3014_frontend
+	rm -rf ./services/com3014_frontend
 
 
 # IMAGE STORAGE
@@ -74,7 +74,7 @@ test-image-storage:
 clean-image-storage:
 	$(info Cleaning Image Storage...)
 	docker compose -f ./services/com3014_image_storage/docker-compose.yml rm -f -s -v
-	rm -r ./services/com3014_image_storage
+	rm -rf ./services/com3014_image_storage
 
 
 # PROFILE
@@ -98,4 +98,28 @@ test-profile:
 clean-profile:
 	$(info Cleaning Profile...)
 	docker compose -f ./services/com3014_profile/docker-compose.yml rm -f -s -v
-	rm -r ./services/com3014_profile
+	rm -rf ./services/com3014_profile
+
+
+# IMAGE TAGGING
+build-image-tagging:
+	$(info Building Image Tagging...)
+	sh ./build_scripts/get_image_tagging.sh
+	docker compose -f ./services/com3014_image_tagging/docker-compose.yml build
+
+start-image-tagging:
+	$(info Starting Image Tagging...)
+	docker compose -f ./services/com3014_image_tagging/docker-compose.yml up -d
+
+stop-image-tagging:
+	$(info Stopping Image Tagging...)
+	docker compose -f ./services/com3014_image_tagging/docker-compose.yml down
+
+test-image-tagging:
+	$(info Testing Image Tagging...)
+	docker compose -f ./services/com3014_image_tagging/docker-compose.yml run com3014imagetagging python3 -m pytest
+
+clean-image-tagging:
+	$(info Cleaning Image Tagging...)
+	docker compose -f ./services/com3014_image_tagging/docker-compose.yml rm -f -s -v
+	rm -rf ./services/com3014_image_tagging
