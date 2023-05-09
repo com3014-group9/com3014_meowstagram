@@ -5,7 +5,7 @@ The repositories for the individual microservices that make up the app can be fo
 - [Frontend](https://github.com/com3014-group9/com3014_frontend)
 - [Authentication Service](https://github.com/com3014-group9/com3014_auth)
 - [Image Storage Service](https://github.com/com3014-group9/com3014_image_storage)
-- [Profile Service https](https://github.com/com3014-group9/com3014_profile)
+- [Profile Service](https://github.com/com3014-group9/com3014_profile)
 - [Image Tagging Service](https://github.com/com3014-group9/com3014_image_tagging)
 
 
